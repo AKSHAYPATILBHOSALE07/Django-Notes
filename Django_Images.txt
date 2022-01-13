@@ -1,0 +1,76 @@
+Django Images:
+
+
+
+
+
+#######directory:#################3
+
+********Parallel Folder like this******* 
+Project Folder
+App Folder
+static Folder / images folder / your images(e.g Picture.jpg)
+
+
+
+
+
+
+
+############Settings.py:##########
+
+STATIC_URL = '/static/'
+
+#MEDIA_URL = '/images/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+
+
+
+#########views.py:##########
+
+def index(request):
+    return render (request, "app_form/index.html") # djago-app(name=app) directory templates/app_form/index.html
+
+
+
+##########urls.py############
+
+from app import views
+
+urlpatterns = [
+
+  
+    path('image', views.index, name='image')
+	
+    ]
+
+
+
+
+##############index.html:########
+
+
+
+
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+  <h1> Uder app ok </h1>
+  {% load static %}
+  <h1>Images</h1>
+  
+    <!--<img src="{% static 'images/Picture.jpg'%}">  -->
+
+    <img src="{% static 'images/Picture.jpg'%}" alt='name' width = '400'  hight='1000' >
+    
+
+</body>
+</html>
+
+###########owner:Akshay-Bhosale#############################
