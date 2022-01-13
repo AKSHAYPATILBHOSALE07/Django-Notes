@@ -1,0 +1,10 @@
+command:
+mkvirtualenv your_env_name
+e.g:mkvirtualenv test
+
+
+Deactivate:
+deactivate your_env_name
+
+Activate:
+workon your_env_name
