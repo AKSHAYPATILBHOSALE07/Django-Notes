@@ -1,0 +1,150 @@
+###Django Setup command######
+
+1. pip install django
+2. django-admin startproject firstDjangoProject  ##django-admin startproject (projectname)
+3. goto directry (cd firstDjangoProject)
+4. open pycharm add workplace 
+5. now create app for project ## django-admin startapp firstapp
+6. now add configuration file and running my django project 
+    ## scricpt path = firstDjangoProject\manage.py 
+    ## parameters = runserver
+    click on apply than ok
+7. now run the code and output found on localhost
+----------------------------------------------------------------------------------------
+project
+
+3. cd project name
+4. python manage.py startapp APP_name ## e.g. python manage.py startapp myfirstapp
+     
+   goto djangoproject and then goto urls.py
+   
+
+   urls.py= 
+             from simpleFirstApp import views
+             
+             urlpatterns = [
+                  path('fistPage',views.FirstPageController,name="first_page"),
+                  path('admin/',admin.site.urls),
+             ]
+
+
+
+
+   views.py= 
+
+            from django.http import HttpResponse
+             def FirstPageController(request):
+                 return HttpResponse("<h1>My First Django Projetc Page</h1>")
+
+-----------------------------------------------------------------------------------------
+### Loading Html file page
+  
+create new directory in app folder(simpleFirstApp)
+ templates then add html file e.g htmlpage.html
+
+Add app name in SimpleDjangoProject/settings.py= INSTALLED_APPS='simpleFirstApp'
+
+   urls.py= 
+             from simpleFirstApp import views
+             
+             urlpatterns = [
+                  path('htmlpage',views.htmlPageController,name="html_page"),
+                  path('admin/',admin.site.urls),
+             ]
+
+
+
+
+   views.py= 
+
+            from django.http import HttpResponse
+
+             def htmlPageController(request):
+                 return render(request,"htmlpage.html")
+
+
+   htmlpage.html
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+
+</body>
+</html>
+
+
+--------------------------------------------------------------------------------------------
+##passing data to html templates
+
+urls.py
+
+
+ path('htmlpageswithdata',views.htmlpagecontrollerwithdata,name='html_page_data'),
+
+
+
+
+   views.py= 
+
+            from django.http import HttpResponse
+
+             data1="this is data 1 passing to html page"
+             data2="this is data 2 passing to html page"
+
+             def htmlPageControllerwithdata(request):
+                 return render(request,"htmlpagewithdata.html",{'data1':data1,'data2':data2})
+
+
+
+htmlfile
+name=e.g htmlpagewithdata.html
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<h1>This value come from server : {{ data1 }}</h1>
+<h2>This value come from server : {{ data2 }}</h2>
+<p>This is a paragraph.</p>
+
+</body>
+</html>
+
+
+------------------------------------------------------------------------------------------------
+
+##passing data from url to controller
+
+
+urls.py
+
+ path('htmlWithdatapass/<str:url_data>',views.Passingdatatocontroller,name='html_data_pass'),
+
+
+views.py
+
+def Passingdatatocontroller(request,url_data):
+   return HttpResponse("<h2>This is data coming via url : "+url_data)
+
+
+
+goto localhost /htmlWithdatapass/yourdata
+
+
+----------------------------------------------------------------------------------------------------
+
+
+
+
+
+
