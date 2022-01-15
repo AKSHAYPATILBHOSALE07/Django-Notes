@@ -1,0 +1,54 @@
+###########home.html##################
+<html>
+  <head>
+    <title>Run Externel python script in html file using django</title>
+  </head>
+  <body>
+
+   <form action="/external/" method = "post">
+      {% csrf_token %}
+      Input Text:
+      <input type="text" name="param" required><br><br>
+      {{data_external}}<br><br>
+      {{data1}}<br><br>
+      <input type="submit" value="Execute external python script">
+      
+    </form>
+
+  </body>
+</html>
+
+#########urls.py###################
+from django.contrib import admin
+from django.urls import path, include
+from app import views 
+ 
+urlpatterns = [
+    
+    path('external/', views.external, name='external')
+    
+]
+
+##############views.py#####################
+from subprocess import run, PIPE
+import sys
+def external(request):
+    inp = request.POST.get('param')
+    out = run([sys.executable,'\\Step_One\\Django_VideoStream-master\\streamapp\\test1.py',inp],shell=False,stdout=PIPE)
+    print(out)
+    return render(request,'streamapp/home.html',{'data1':out.stdout})
+
+
+#############test1.py###################
+import sys
+import datetime
+
+
+time=datetime.datetime.now()
+
+output = "Hii %s Current time is %s"%(sys.argv[1],time)
+print(output)
+
+
+
+
