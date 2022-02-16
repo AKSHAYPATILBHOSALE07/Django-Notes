@@ -12,3 +12,7 @@ Run external python script in html file using django.txt  used for Run external 
 
 
 info for start project.txt   used for create django project in pycharm .
+
+
+How to change defult timezone UTC to India time zone in Django ? 
+ANS: Check TimeZone.txt file.
