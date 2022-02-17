@@ -16,3 +16,5 @@ info for start project.txt   used for create django project in pycharm .
 
 How to change defult timezone UTC to India time zone in Django ? 
 ANS: Check TimeZone.txt file.
+
+How to add app in settings.py for professional way? check this .txt file
