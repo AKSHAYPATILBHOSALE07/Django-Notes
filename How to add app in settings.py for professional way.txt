@@ -1,0 +1,22 @@
+
+How to add app in settings.py for professional way ?
+
+
+settings.py
+
+INSTALLED_APPS = [
+
+	'api.apps.ApiConfig'
+]
+
+
+
+IN your app directory check/add 
+
+
+in apps.py
+
+
+
+class ApiConfig(AppConfig):
+	name = 'api'
